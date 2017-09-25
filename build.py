@@ -10,7 +10,7 @@ options = {
 setup(
     name = "Shrok",
     options = options,
-    version = "1.0",
+    version = "1.1",
     description = 'CreamyMemers DnD Discord Bot',
     executables = executables
 )

@@ -6,14 +6,20 @@ from urllib.request import urlopen, Request
 from urllib.parse import urlencode
 description = '''Shrok CreamyMemers Discord DnD Bot'''
 bot = commands.Bot(command_prefix=']', description=description)
+
 @bot.event
 async def on_ready():
-    print("Logged in as " + bot.user.name + " " + bot.user.id + "\n")
+    print("INFO: Logged in as " + bot.user.name + " " + bot.user.id + "\n")
+
+@bot.event
+async def on_error(event, args, kwargs):
+    print("ERROR: \n    Event: " + str(event) + "\n    Argument: " + str(args))
+    await bot.say("```Erorrs have Layers: " + event + "```")
 
 @bot.command()
 async def commands():
     print("Sending help text ...")
-    await bot.say("```===Help Text===\n]commands - Displays this text\n]d100 - Rolls a d100\n]d20 - Rolls a d20\n]d12 - Rolls a d12\n]d10 - Rolls a d10\n]d8 - Rolls a d8\n]d6 - Rolls a d6\n]d4 - Rolls a d4\n]d2 - Rolls a d2```")
+    await bot.say("```===Help Text===\n]commands - Displays this text\n]d100 - Rolls a d100\n]d20 - Rolls a d20\n]d12 - Rolls a d12\n]d10 - Rolls a d10\n]d8 - Rolls a d8\n]d6 - Rolls a d6\n]d4 - Rolls a d4\n]d2 - Rolls a d2\n]randMonster - Generates a Random Monster```")
 
 @bot.command()
 async def d20():
@@ -126,5 +132,9 @@ async def d2():
     z = y["data"]
     z = str(z)[1:-1]
     await bot.say("Result of d2: " + z)
+
+@bot.command()
+async def randMonster():
+    await bot.say("Work in Progress ...")
 
 bot.run("MzYxNjQyNzIxNzc5MTIyMTg3.DKnQvA.8CbY3sHLZc178ew7UzQUC8PHTgs")
