@@ -4,6 +4,7 @@ import json
 import urllib
 from urllib.request import urlopen, Request
 from urllib.parse import urlencode
+import random
 description = '''Shrok CreamyMemers Discord DnD Bot'''
 bot = commands.Bot(command_prefix=']', description=description)
 
@@ -19,7 +20,7 @@ async def on_error(event, args, kwargs):
 @bot.command()
 async def commands():
     print("Sending help text ...")
-    await bot.say("```===Help Text===\n]commands - Displays this text\n]d100 - Rolls a d100\n]d20 - Rolls a d20\n]d12 - Rolls a d12\n]d10 - Rolls a d10\n]d8 - Rolls a d8\n]d6 - Rolls a d6\n]d4 - Rolls a d4\n]d2 - Rolls a d2\n]randMonster - Generates a Random Monster```")
+    await bot.say("```===Help Text===\n]commands - Displays this text\n]d100 - Rolls a d100\n]d20 - Rolls a d20\n]d12 - Rolls a d12\n]d10 - Rolls a d10\n]d8 - Rolls a d8\n]d6 - Rolls a d6\n]d4 - Rolls a d4\n]d2 - Rolls a d2\n]randMonster - Generates a Random Enemy```")
 
 @bot.command()
 async def d20():
@@ -134,7 +135,11 @@ async def d2():
     await bot.say("Result of d2: " + z)
 
 @bot.command()
-async def randMonster():
-    await bot.say("Work in Progress ...")
+async def randEnemy():
+    await bot.say("Generating Enemy Stats ...")
+    hitDie = choice(range(2, 12, 2))
+    health = choice(range(1, 25))
+    armorPoints = choice(range(1, 8))
+    await bot.say("Hit Die: d" + hitDie + "\nHP: " + health + "\nAP: " + armorPoints)
 
 bot.run("MzYxNjQyNzIxNzc5MTIyMTg3.DKnQvA.8CbY3sHLZc178ew7UzQUC8PHTgs")
