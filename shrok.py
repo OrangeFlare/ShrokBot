@@ -8,6 +8,30 @@ import random
 description = '''Shrok CreamyMemers Discord DnD Bot'''
 bot = commands.Bot(command_prefix=']', description=description)
 
+def ModCalc(Ability):
+    if Ability == 10 or Ability == 11:
+        return 0
+    elif Ability == 12 or Ability == 13:
+        return 1
+    elif Ability == 14 or Ability == 15:
+        return 2
+    elif Ability == 16 or Ability == 17:
+        return 3
+    elif Ability == 18 or Ability == 19:
+        return 4
+    elif Ability == 20 or Ability == 21:
+        return 5
+    elif Ability == 22 or Ability == 23:
+        return 6
+    elif Ability == 24 or Ability == 25:
+        return 7
+    elif Ability == 26 or Ability == 27:
+        return 8
+    elif Ability == 28 or Ability == 29:
+        return 9
+    elif Ability == 30:
+        return 10
+
 @bot.event
 async def on_ready():
     print("INFO: Logged in as " + bot.user.name + " " + bot.user.id + "\n")
@@ -20,7 +44,7 @@ async def on_error(event, args, kwargs):
 @bot.command()
 async def commands():
     print("Sending help text ...")
-    await bot.say("```===Help Text===\n]commands - Displays this text\n]d100 - Rolls a d100\n]d20 - Rolls a d20\n]d12 - Rolls a d12\n]d10 - Rolls a d10\n]d8 - Rolls a d8\n]d6 - Rolls a d6\n]d4 - Rolls a d4\n]d2 - Rolls a d2\n]randMonster - Generates a Random Enemy```")
+    await bot.say("```===Help Text===\n]commands - Displays this text\n]d100 - Rolls a d100\n]d20 - Rolls a d20\n]d12 - Rolls a d12\n]d10 - Rolls a d10\n]d8 - Rolls a d8\n]d6 - Rolls a d6\n]d4 - Rolls a d4\n]d2 - Rolls a d2\n]randEnemy - Generates a Random Enemy```")
 
 @bot.command()
 async def d20():
@@ -136,10 +160,39 @@ async def d2():
 
 @bot.command()
 async def randEnemy():
-    await bot.say("Generating Enemy Stats ...")
-    hitDie = choice(range(2, 12, 2))
-    health = choice(range(1, 25))
-    armorPoints = choice(range(1, 8))
-    await bot.say("Hit Die: d" + hitDie + "\nHP: " + health + "\nAP: " + armorPoints)
+    HitDie = random.choice(range(2, 13, 2))
+    Health = random.choice(range(1, 26))
+    ArmorClass = random.choice(range(1, 9))
+    Str = random.choice(range(10, 31))
+    StrMod = ModCalc(Str)
+    Dex = random.choice(range(10, 31))
+    DexMod = ModCalc(Dex)
+    Con = random.choice(range(10, 31))
+    ConMod = ModCalc(Con)
+    Int = random.choice(range(10, 31))
+    IntMod = ModCalc(Int)
+    Wis = random.choice(range(10, 31))
+    WisMod = ModCalc(Wis)
+    Cha = random.choice(range(10, 31))
+    ChaMod = ModCalc(Cha)
+    Init = random.choice(range(-4, 5))
+    await bot.say("```     Hit Die: d" + str(HitDie) + \
+        "\n          HP: " + str(Health) + \
+        "\n          AC: " + str(ArmorClass) + \
+        "\n  Initiative: " + str(Init) + \
+        "\n----------------" + \
+        "\n    Strength: " + str(Str) + \
+        "\n   Dexterity: " + str(Dex) + \
+        "\nConstitution: " + str(Con) + \
+        "\nIntelligence: " + str(Int) + \
+        "\n      Wisdom: " + str(Wis) + \
+        "\n    Charisma: " + str(Cha) + \
+        "\n----------------" + \
+        "\n      StrMod: " + str(StrMod) + \
+        "\n      DexMod: " + str(DexMod) + \
+        "\n      ConMod: " + str(ConMod) + \
+        "\n      IntMod: " + str(IntMod) + \
+        "\n      WisMod: " + str(WisMod) + \
+        "\n      ChaMod: " + str(ChaMod) + "```")
 
 bot.run("MzYxNjQyNzIxNzc5MTIyMTg3.DKnQvA.8CbY3sHLZc178ew7UzQUC8PHTgs")
