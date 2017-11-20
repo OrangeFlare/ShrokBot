@@ -39,12 +39,7 @@ async def on_ready():
 @bot.event
 async def on_error(event, args, kwargs):
     print("ERROR: \n    Event: " + str(event) + "\n    Argument: " + str(args))
-    await bot.say("```Erorrs have Layers: " + event + "```")
-
-@bot.command()
-async def commands():
-    print("Sending help text ...")
-    await bot.say("```===Help Text===\n]commands - Displays this text\n]d100 - Rolls a d100\n]d20 - Rolls a d20\n]d12 - Rolls a d12\n]d10 - Rolls a d10\n]d8 - Rolls a d8\n]d6 - Rolls a d6\n]d4 - Rolls a d4\n]d2 - Rolls a d2\n]randEnemy - Generates a Random Enemy```")
+    await bot.say("```Erorrs have Layers: " + str(event) + "```")
 
 @bot.command()
 async def d20():
