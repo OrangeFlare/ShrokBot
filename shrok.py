@@ -37,7 +37,7 @@ async def on_ready():
     print("INFO: Logged in as " + bot.user.name + " " + bot.user.id + "\n")
 
 @bot.event
-async def on_error(event, args, kwargs):
+async def on_error(event, args):
     print("ERROR: \n    Event: " + str(event) + "\n    Argument: " + str(args))
     await bot.say("```Erorrs have Layers: " + str(event) + "```")
 
@@ -192,7 +192,7 @@ async def randEnemy():
 
 @bot.command()
 async def expGain(basePokemonEXP, LVLFaintedPokemon, PlayerPokemonUsed):
-    expGained = ( int(basePokemonEXP) * int(LVLFaintedPokemon) )/(7 * int(PlayerPokemonUsed) )
-    await bot.say("Experience Gained: " + expGained)
+    expGained = ( int(basePokemonEXP) * int(LVLFaintedPokemon) )/( 7 * int(PlayerPokemonUsed) )
+    await bot.say("Experience Gained: " + str(int(expGained)) )
     
 bot.run("MzYxNjQyNzIxNzc5MTIyMTg3.DKnQvA.8CbY3sHLZc178ew7UzQUC8PHTgs")
