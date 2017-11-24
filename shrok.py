@@ -192,7 +192,7 @@ async def randEnemy():
 
 @bot.command()
 async def expGain(basePokemonEXP, LVLFaintedPokemon, PlayerPokemonUsed):
-    expGained = (basePokemonEXP * LVLFaintedPokemon)/(7 * PlayerPokemonUsed)
+    expGained = ( int(basePokemonEXP) * int(LVLFaintedPokemon) )/(7 * int(PlayerPokemonUsed) )
     await bot.say("Experience Gained: " + expGained)
     
 bot.run("MzYxNjQyNzIxNzc5MTIyMTg3.DKnQvA.8CbY3sHLZc178ew7UzQUC8PHTgs")
