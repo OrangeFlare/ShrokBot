@@ -195,4 +195,4 @@ async def expGain(basePokemonEXP, LVLFaintedPokemon, PlayerPokemonUsed):
     expGained = ( int(basePokemonEXP) * int(LVLFaintedPokemon) )/( 7 * int(PlayerPokemonUsed) )
     await bot.say("Experience Gained: " + str(int(expGained)) )
     
-bot.run("MzYxNjQyNzIxNzc5MTIyMTg3.DKnQvA.8CbY3sHLZc178ew7UzQUC8PHTgs")
+bot.run("API_TOKEN")
